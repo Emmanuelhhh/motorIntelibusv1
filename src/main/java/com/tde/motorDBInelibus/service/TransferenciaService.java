@@ -24,11 +24,11 @@ public class TransferenciaService {
 
     @Transactional
     public void transferirDatos(Integer status) {
-        // Paso 1: Obtener datos de la base de datos origen con el estatus específico
+        
         Iterable<DescargasAvlO> registros = descargasAvlRepoO.findTopByVarControl(status);
-
-        // Paso 2: Guardar en la base de datos destino
-        List<DescargasAvlD> registrosDestino = new ArrayList<>();
+        System.out.println("REGISTROS ENCONTRADOS  "+registros);
+    
+    /*    List<DescargasAvlD> registrosDestino = new ArrayList<>();
         
         for (DescargasAvlO registroO : registros) {
             DescargasAvlD registroD = convertirADestino(registroO);
@@ -37,8 +37,9 @@ public class TransferenciaService {
         
         descargasAvlRepoD.saveAll(registrosDestino);
 
-        // Paso 3: Eliminar de la base de datos origen los registros que @@fueron transferidos
-        descargasAvlRepoO.deleteAll(registros);
+       descargasAvlRepoO.deleteAll(registros);
+       
+       */
     }
     
     
@@ -52,7 +53,6 @@ private DescargasAvlD convertirADestino(DescargasAvlO origen) {
     destino.setLatidudGrad(origen.getLatidudGrad());
     destino.setVelocidad(origen.getVelocidad());
     destino.setNumSat(origen.getNumSat());
-    destino.setHeading(origen.getHeading());
     destino.setFechaHoraSat(origen.getFechaHoraSat());
     destino.setTipoEvento(origen.getTipoEvento());
     destino.setVariable1(origen.getVariable1());

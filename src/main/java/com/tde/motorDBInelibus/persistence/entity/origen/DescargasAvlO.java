@@ -20,45 +20,43 @@ public class  DescargasAvlO implements Serializable{
     private Long id;
 
 
-    @Column(name="intTipoAVL")
+    @Column(name="inttipoavl")
     private Integer tipoAvl;
 
     // @ManyToOne(fetch = FetchType.LAZY)
     //@JoinColumn( name="strModem_ID", referencedColumnName = "serial")
     //private Avl avl;
     
-    @Column(name="strModemID")
+    @Column(name="strmodemid")
     private String idModem;
 
-    @Column(name="fLongitud_grad")
+    @Column(name="flongitud_grad")
     private Float longitudGrad;
 
-    @Column(name="fLatitud_grad")
+    @Column(name="flatitud_grad")
     private Float latidudGrad;
 
-    @Column(name="intVelocidad")
+    @Column(name="intvelocidad")
     private Integer velocidad;
 
 
-    @Column(name="intNum_Sat")
+    @Column(name="intnum_sat")
     private Integer numSat;
 
-    @Column(name="intHeading")
-    private Integer heading;
-
-    @Column(name="dFecha_Hora_SAT")
+ 
+    @Column(name="dfecha_hora_sat")
     private LocalDateTime fechaHoraSat;
 
-    @Column(name="intTipo_Evento")
+    @Column(name="inttipo_evento")
     private Integer tipoEvento;
 
-    @Column(name="intVariable1")
+    @Column(name="intvariable1")
     private Integer variable1;
 
 
-    @Column(name="dFechaHoraComputadora")
+    @Column(name = "dfechahoracomputadora")
     private LocalDateTime fechaHoraComputadora;
 
-    @Column(name="intVarControl")
+    @Column(name="intvarcontrol")
     private Integer varControl;
 }

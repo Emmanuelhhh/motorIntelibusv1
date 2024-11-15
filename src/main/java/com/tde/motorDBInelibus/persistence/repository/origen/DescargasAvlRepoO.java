@@ -16,9 +16,9 @@ public interface DescargasAvlRepoO extends CrudRepository<DescargasAvlO, Long> {
 	   // @Query("SELECT  a FROM OpeDescargasAVL a WHERE a.varControl = :varControl ORDER BY a.fechaHoraComputadora ASC")
 
 			@Query(value = "SELECT TOP (100) * " +
-            "FROM [SIGOWEB].[dbo].[tblDescargasAVL_MINISIGO] " +
-            "WHERE id > 402045214 AND strModemID = 4675784291 AND int_var_control = :varControl " +
-            "ORDER BY id ASC", 
+            "FROM [INTELIBUS].[dbo].[tblDescargasAVL] " +
+            "WHERE  intVarControl = :varControl " +
+            "ORDER BY id desc", 
             nativeQuery = true)
 			Iterable<DescargasAvlO> findTopByVarControl(@Param("varControl") Integer varControl);
 
