@@ -1,0 +1,42 @@
+spring:
+  datasource:
+   
+    
+    #Desarrollo
+    origen:
+      url: jdbc:sqlserver://localhost:1433;databaseName=INTELIBUS;encrypt=false;trustServerCertificate=true
+      username: admin
+      password: admin
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      
+      
+    destino:
+      url: jdbc:sqlserver://localhost:1433;databaseName=sigo
+      username: admin
+      password: admin
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+     
+      
+    #PRODUCCIÓN  
+    #     origen:
+    #  url: jdbc:sqlserver://localhost:1433;databaseName=INTELIBUS
+    #  username: admin
+    #  password: admin
+    
+    # driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+    
+   # destino:
+   #   url: jdbc:sqlserver://localhost:1433;databaseName=sigo
+   #   username: admin
+   #   password: admin
+   #   driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      
+      
+      
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+    hibernate:
+      ddl-auto: none  # Puedes ajustar según el control que deseas sobre las tablas
