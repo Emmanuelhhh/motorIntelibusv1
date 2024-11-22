@@ -4,14 +4,14 @@ spring:
     
     #Desarrollo
     origen:
-      url: jdbc:sqlserver://localhost:1433;databaseName=INTELIBUS;encrypt=false;trustServerCertificate=true
+      jdbc-url: jdbc:sqlserver://localhost:1433;databaseName=INTELIBUS;encrypt=false;trustServerCertificate=true
       username: admin
       password: admin
       driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
       
       
     destino:
-      url: jdbc:sqlserver://localhost:1433;databaseName=sigo
+      jdbc-url: jdbc:sqlserver://localhost:1433;databaseName=sigo;encrypt=false;trustServerCertificate=true
       username: admin
       password: admin
       driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
@@ -35,10 +35,13 @@ spring:
       
       
   jpa:
+   
    properties:
     hibernate:
-      dialect: org.hibernate.dialect.SQLServerDialect
+      format_sql: true
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        
+    show-sql: true
   hibernate:
     ddl-auto: none  # Ajusta según lo que necesites

@@ -1,4 +1,4 @@
-package com.tde.motorDBInelibus.persistence.entity.origen;
+package com.tde.motorDBInelibus.persistence.origen.entity;
 	
 
 import jakarta.persistence.*;
@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Data
 @Entity
 @Immutable
-@Table(name="ope_descargasavl")
+@Table(name="tbldescargasavl")
 public class  DescargasAvlO implements Serializable{
 
     @Id

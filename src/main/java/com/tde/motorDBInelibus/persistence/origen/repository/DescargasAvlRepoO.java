@@ -1,14 +1,17 @@
-package com.tde.motorDBInelibus.persistence.repository.origen;
+package com.tde.motorDBInelibus.persistence.origen.repository;
 
 
-import com.tde.motorDBInelibus.persistence.entity.origen.DescargasAvlO;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import com.tde.motorDBInelibus.persistence.origen.entity.DescargasAvlO;
+
 import jakarta.transaction.Transactional;
 
-
+@Repository
 public interface DescargasAvlRepoO extends CrudRepository<DescargasAvlO, Long> {
 
 	
