@@ -7,12 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.tde.motorDBInelibus.persistence.origen.*;
 import com.tde.motorDBInelibus.persistence.origen.entity.DescargasAvlO;
 import com.tde.motorDBInelibus.persistence.origen.repository.DescargasAvlRepoO;
 import com.tde.motorDBInelibus.persistence.destino.entity.DescargasAvlD;
 import com.tde.motorDBInelibus.persistence.destino.repository.DescargasAvlRepoD;
-import com.tde.motorDBInelibus.persistence.destino.*;
+
 
 
 @Service

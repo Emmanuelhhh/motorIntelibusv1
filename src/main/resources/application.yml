@@ -2,23 +2,23 @@ spring:
   datasource:
    
     
-    #Desarrollo
+    #Desarrollo 
     origen:
-      jdbc-url: jdbc:sqlserver://localhost:1433;databaseName=INTELIBUS;encrypt=false;trustServerCertificate=true
+      jdbc-url: jdbc:sqlserver://localhost:1433;databaseName=INTELIBUS;encrypt=true;trustServerCertificate=true
       username: admin
       password: admin
       driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
       
       
     destino:
-      jdbc-url: jdbc:sqlserver://localhost:1433;databaseName=sigo;encrypt=false;trustServerCertificate=true
+      jdbc-url: jdbc:sqlserver://localhost:1433;databaseName=sigo;encrypt=true;trustServerCertificate=true
       username: admin
       password: admin
       driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
      
       
     #PRODUCCIÓN  
-    #     origen:
+   #origen:
     #  url: jdbc:sqlserver://localhost:1433;databaseName=INTELIBUS
     #  username: admin
     #  password: admin

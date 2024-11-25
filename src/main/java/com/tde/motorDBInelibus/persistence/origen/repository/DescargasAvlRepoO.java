@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.tde.motorDBInelibus.persistence.origen.entity.DescargasAvlO;
 
-import jakarta.transaction.Transactional;
+
 
 @Repository
 public interface DescargasAvlRepoO extends CrudRepository<DescargasAvlO, Long> {

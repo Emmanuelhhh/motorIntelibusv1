@@ -4,10 +4,12 @@ package com.tde.motorDBInelibus.persistence.origen.entity;
 import lombok.Data;
 import org.hibernate.annotations.Immutable;
 
-import jakarta.persistence.*;
-
-
 import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Data
 @Entity
