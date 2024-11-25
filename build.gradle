@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.tde.motordbIntelubus'
-version = '0.0.2-pruebas1'
+version = '0.0.2-pruebas2'
 
 java {
 	toolchain {
