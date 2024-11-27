@@ -30,7 +30,7 @@ public class CardTransferenciaService {
 	
 	cardO.findTopByVarControl(status).forEach(registros::add);
 	
-	System.out.print("REGISTROS CARD ENCONTRADOS" + registros);
+	System.out.println("REGISTROS CARD ENCONTRADOS" + registros);
 	
 	 List<DescargasCardO> registrosFallidos = new ArrayList<>();
 
@@ -49,6 +49,7 @@ public class CardTransferenciaService {
 	
 	registros.removeAll(registrosFallidos);
 	cardD.deleteAll();
+	 System.out.println("FIN DEL PROCESO CARDS");
 	
 	}
 	

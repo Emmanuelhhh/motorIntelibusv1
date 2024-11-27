@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import com.tde.motorDBInelibus.service.AVLTransferenciaService;
 import com.tde.motorDBInelibus.service.MSTranferenciaService;
 import com.tde.motorDBInelibus.service.CardTransferenciaService;
+import com.tde.motorDBInelibus.service.EventoMiniSigoTransferenciaService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +28,9 @@ public class TransferenciaJob {
     @Autowired 
     private CardTransferenciaService cardTransferenciaService;
     
+    @Autowired
+    private EventoMiniSigoTransferenciaService eventoMiniSigoTransferenciaService;
+    
     private final ExecutorService executorService = Executors.newFixedThreadPool(3);
     private final ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(1);
 
@@ -40,7 +44,10 @@ public class TransferenciaJob {
         scheduledExecutorService.schedule(() -> executeSafely(() -> avltransferenciaService.transferirDatos(7)), 0, TimeUnit.SECONDS);
         scheduledExecutorService.schedule(() -> executeSafely(() -> msTranferenciaService.minisigotransferirDatos(7)), 30, TimeUnit.SECONDS);
         scheduledExecutorService.schedule(() -> executeSafely(() -> cardTransferenciaService.tranferirDatos(7)), 60, TimeUnit.SECONDS);
+        scheduledExecutorService.schedule(() -> executeSafely(() -> eventoMiniSigoTransferenciaService.transferirDatos(7)), 60, TimeUnit.SECONDS);
 
+        
+        
         log.info("Tareas programadas");
     }
 

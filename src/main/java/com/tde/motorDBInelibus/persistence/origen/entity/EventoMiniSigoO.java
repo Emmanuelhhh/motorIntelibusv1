@@ -3,12 +3,16 @@ package com.tde.motorDBInelibus.persistence.origen.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+
+import org.hibernate.annotations.Immutable;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table(name = "evento_mini_sigo")
+@Immutable
+@Table(name = "tblevento_minisigo")
 public class EventoMiniSigoO implements Serializable {
 
     @Id
