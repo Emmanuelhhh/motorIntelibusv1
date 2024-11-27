@@ -56,7 +56,7 @@ public class  DescargasAvlO implements Serializable{
     private LocalDateTime fechaHoraSat;
 
     @Column(name="inttipo_evento")
-    private Integer tipoEvento;
+    private int  tipoEvento;
 
     @Column(name="intvariable1")
     private Integer variable1;

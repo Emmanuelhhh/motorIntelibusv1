@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import com.tde.motorDBInelibus.service.AVLTransferenciaService;
 import com.tde.motorDBInelibus.service.MSTranferenciaService;
+import com.tde.motorDBInelibus.service.CardTransferenciaService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +23,10 @@ public class TransferenciaJob {
     private AVLTransferenciaService avltransferenciaService;
     @Autowired
     private MSTranferenciaService msTranferenciaService;
+    
+    @Autowired 
+    private CardTransferenciaService cardTransferenciaService;
+    
     private final ExecutorService executorService = Executors.newFixedThreadPool(3);
     private final ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(1);
 
@@ -34,7 +39,7 @@ public class TransferenciaJob {
 
         scheduledExecutorService.schedule(() -> executeSafely(() -> avltransferenciaService.transferirDatos(7)), 0, TimeUnit.SECONDS);
         scheduledExecutorService.schedule(() -> executeSafely(() -> msTranferenciaService.minisigotransferirDatos(7)), 30, TimeUnit.SECONDS);
-       // scheduledExecutorService.schedule(() -> executeSafely(() -> transferenciaService.xtransferirDatos(7)), 60, TimeUnit.SECONDS);
+        scheduledExecutorService.schedule(() -> executeSafely(() -> cardTransferenciaService.tranferirDatos(7)), 60, TimeUnit.SECONDS);
 
         log.info("Tareas programadas");
     }
