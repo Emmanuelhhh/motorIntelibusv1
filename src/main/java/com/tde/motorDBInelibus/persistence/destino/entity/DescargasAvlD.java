@@ -20,52 +20,53 @@ import java.io.Serializable;
 @Data
 @Entity
 @Immutable
-@Table(name="descargas_avl")
-public class  DescargasAvlD implements Serializable{
+@Table(name = "tbldescargasavl")
+public class DescargasAvlD implements Serializable {
 
-    @Id
-    @Column(name="id")
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
+    @Column(name = "id")
     private Long id;
 
-
-    @Column(name="int_tipo_avl")
+    @Column(name = "inttipoavl")
     private Integer tipoAvl;
 
-  
-   /* @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn( name="str_id_modem1", referencedColumnName = "serial")
-     private Avl avl;*/
-    
-    @Column(name="str_id_modem")
+    @Column(name = "strmodemid")
     private String idModem;
 
-    @Column(name="f_longitud_grad")
+    @Column(name = "flongitud_grad")
     private Float longitudGrad;
 
-    @Column(name="f_latitud_grad")
-    private Float latidudGrad;
+    @Column(name = "flatitud_grad")
+    private Float latitudGrad;
 
-    @Column(name="int_velocidad")
+    @Column(name = "intvelocidad")
     private Integer velocidad;
 
-
-    @Column(name="int_num_sat")
+    @Column(name = "intnum_sat")
     private Integer numSat;
 
-
-    @Column(name="d_fecha_hora_sat")
+    @Column(name = "dfecha_hora_sat")
     private LocalDateTime fechaHoraSat;
 
-    @Column(name="int_tipo_evento")
+    @Column(name = "inttipo_evento")
     private Integer tipoEvento;
 
-    @Column(name="int_variable1")
+    @Column(name = "intvariable1")
     private Integer variable1;
 
-
-    @Column(name="d_fecha_hora_computadora")
+    @Column(name = "dfechahoracomputadora")
     private LocalDateTime fechaHoraComputadora;
 
-    @Column(name="int_var_control")
+    @Column(name = "intvarcontrol")
     private Integer varControl;
+
+    @Column(name = "intstatus")
+    private Integer status;
+
+
 }

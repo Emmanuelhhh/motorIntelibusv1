@@ -33,7 +33,7 @@ public class EventoMiniSigoD implements Serializable {
     @Column(name = "int_id_evento_mini_sigo")
     private Integer idEventoMiniSigo;
 
-    @Column(name = "int_var_control")
+    @Column(name = "intvarcontrol")
     private Integer varControl;
 
     @Column(name = "created_at", nullable = false, updatable = false)

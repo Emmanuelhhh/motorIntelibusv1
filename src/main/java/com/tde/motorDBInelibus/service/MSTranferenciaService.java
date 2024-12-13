@@ -58,8 +58,8 @@ public class MSTranferenciaService {
 		DescargasMiniSigoD destino = new DescargasMiniSigoD();
 		
 		destino.setIdDGPRS(origen.getIdDGPRS());
-		destino.setId_modem(origen.getId_modem());
-		destino.setIdCiudad(origen.getIdCiudad());
+		destino.setIdModem(origen.getId_modem());
+		//destino.setIdCiudad(origen.getIdCiudad());
 		destino.setIdRuta(origen.getIdRuta());
 		
 		destino.setIdIntelibus(origen.getIdIntelibus());
@@ -67,6 +67,7 @@ public class MSTranferenciaService {
 		destino.setSubidasBarra1(origen.getSubidasBarra1());
 		destino.setBajadasBarra1(origen.getBajadasBarra1());
 		destino.setBloqueosBarra1(origen.getBloqueosBarra1());
+		destino.setPablosBarra1(origen.getPablosBarra1());
 		destino.setNumApagadosBarra1(origen.getNumApagadosBarra1());
 		destino.setSubidasBarra2(origen.getSubidasBarra2());
 		destino.setBajadasBarra2(origen.getBajadasBarra2());

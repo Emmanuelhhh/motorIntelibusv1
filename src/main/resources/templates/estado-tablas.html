@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Estado de Tablas Origen</title>
+</head>
+<body>
+    <h1>Estado de Tablas Origen</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Tabla</th>
+                <th>¿Tiene Datos?</th>
+                <th>Fecha de ultima insersión</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="tabla : ${estadoTablas}">
+                <td th:text="${tabla.key}"></td>
+                <td th:text="${tabla.value}"></td>
+                <td th:text="${tabla.value}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

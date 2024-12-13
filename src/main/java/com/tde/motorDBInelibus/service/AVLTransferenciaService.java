@@ -60,7 +60,7 @@ private DescargasAvlD convertirADestino(DescargasAvlO origen) {
     destino.setTipoAvl(origen.getTipoAvl());
     destino.setIdModem(origen.getIdModem());
     destino.setLongitudGrad(origen.getLongitudGrad());
-    destino.setLatidudGrad(origen.getLatidudGrad());
+    destino.setLatitudGrad(origen.getLatidudGrad());
     destino.setVelocidad(origen.getVelocidad());
     destino.setNumSat(origen.getNumSat());
     destino.setFechaHoraSat(origen.getFechaHoraSat());

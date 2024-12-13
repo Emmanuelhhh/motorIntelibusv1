@@ -43,9 +43,9 @@ public class TransferenciaJob {
 
         scheduledExecutorService.schedule(() -> executeSafely(() -> avltransferenciaService.transferirDatos(7)), 0, TimeUnit.SECONDS);
         scheduledExecutorService.schedule(() -> executeSafely(() -> msTranferenciaService.minisigotransferirDatos(7)), 30, TimeUnit.SECONDS);
-        scheduledExecutorService.schedule(() -> executeSafely(() -> cardTransferenciaService.tranferirDatos(7)), 60, TimeUnit.SECONDS);
-        scheduledExecutorService.schedule(() -> executeSafely(() -> eventoMiniSigoTransferenciaService.transferirDatos(7)), 60, TimeUnit.SECONDS);
-
+       // scheduledExecutorService.schedule(() -> executeSafely(() -> cardTransferenciaService.tranferirDatos(7)), 60, TimeUnit.SECONDS);
+       // scheduledExecutorService.schedule(() -> executeSafely(() -> eventoMiniSigoTransferenciaService.transferirDatos(7)), 90, TimeUnit.SECONDS);
+       
         
         
         log.info("Tareas programadas");

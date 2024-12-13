@@ -22,7 +22,11 @@ import java.io.Serializable;
 @Table(name="tbldescargasavl")
 public class  DescargasAvlO implements Serializable{
 
-    @Id
+   
+	private static final long serialVersionUID = 1L;
+
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private Long id;
