@@ -17,7 +17,7 @@ public interface DescargasMiniSigoRepoO extends CrudRepository<DescargasMiniSigo
 	@Query(value = "SELECT TOP (100) * " +
             "FROM [INTELIBUS].[dbo].[tblDescarga_MiniSigo] " +
             "WHERE  intVarControl = :varControl " +
-            "ORDER BY id_DGPRS desc", 
+            "ORDER BY id_DGPRS", 
             nativeQuery = true)
 			Iterable<DescargasMiniSigoO> findTopByVarControl(@Param("varControl") Integer varControl);
 }

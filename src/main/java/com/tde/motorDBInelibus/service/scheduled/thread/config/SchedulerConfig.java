@@ -12,7 +12,7 @@ public class SchedulerConfig {
     @Bean
     public ThreadPoolTaskScheduler taskScheduler() {
         ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();
-        scheduler.setPoolSize(3); // Número de hilos disponibles
+        scheduler.setPoolSize(5); // Número de hilos disponibles
         scheduler.setThreadNamePrefix("ScheduledTask-");
         return scheduler;
     }

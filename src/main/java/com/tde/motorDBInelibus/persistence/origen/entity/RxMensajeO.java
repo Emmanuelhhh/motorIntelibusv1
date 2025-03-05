@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 @Immutable
-@Table(name = "rxmensaje")
+@Table(name = "tblrxmensaje")
 public class RxMensajeO implements Serializable {
 
     @Id

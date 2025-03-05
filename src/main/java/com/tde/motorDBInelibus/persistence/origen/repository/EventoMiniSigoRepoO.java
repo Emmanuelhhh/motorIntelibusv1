@@ -13,7 +13,7 @@ public interface EventoMiniSigoRepoO extends CrudRepository<EventoMiniSigoO, Lon
     @Query(value = "SELECT TOP (100) * " +
             "FROM [INTELIBUS].[dbo].[tblEvento_MiniSigo] " +
             "WHERE intVarControl = :varControl " +
-            "ORDER BY id_dgprs DESC", 
+            "ORDER BY id_dgprs", 
             nativeQuery = true)
     Iterable<EventoMiniSigoO> findTopByVarControl(@Param("varControl") Integer varControl);
 

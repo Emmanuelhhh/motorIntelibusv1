@@ -1,6 +1,8 @@
 package com.tde.motorDBInelibus.persistence.origen.entity;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -8,6 +10,8 @@ import org.hibernate.annotations.Immutable;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+
+
 
 @Data
 @Entity

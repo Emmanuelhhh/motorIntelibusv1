@@ -18,7 +18,7 @@ import javax.persistence.Table;
 public class DescargasMiniSigoD implements Serializable {
 
     @Id
-    @Column(name = "iddgprs")
+    @Column(name = "id_dgprs")
     private Long idDGPRS;
 
     @Column(name = "strmodem_id")

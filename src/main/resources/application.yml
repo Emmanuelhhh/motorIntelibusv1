@@ -1,38 +1,25 @@
+server:
+ port: 8083
 spring:
   datasource:
    
     
     #Desarrollo 
     origen:
-      jdbc-url: jdbc:sqlserver://localhost:1433;databaseName=INTELIBUS;encrypt=true;trustServerCertificate=true
-      username: admin
-      password: admin
+      jdbc-url: jdbc:sqlserver://131.1.0.137:1433;databaseName=INTELIBUS;encrypt=true;trustServerCertificate=true
+      username: sa
+      password: sa
       driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
       
       
     destino:
-      jdbc-url: jdbc:sqlserver://localhost:1433;databaseName=sigo;encrypt=true;trustServerCertificate=true
-      username: admin
-      password: admin
+      jdbc-url: jdbc:sqlserver://131.1.0.93:1433;databaseName=INTELIBUS;encrypt=true;trustServerCertificate=true
+      username: sa
+      password: Tda21g0*
       driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
      
       
-    #PRODUCCIÓN  
-   #origen:
-    #  url: jdbc:sqlserver://localhost:1433;databaseName=INTELIBUS
-    #  username: admin
-    #  password: admin
-    
-    # driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
 
-    
-   # destino:
-   #   url: jdbc:sqlserver://localhost:1433;databaseName=sigo
-   #   username: admin
-   #   password: admin
-   #   driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-      
-      
       
   jpa:
    

@@ -18,7 +18,7 @@ public interface DescargasCardRepoO extends CrudRepository<DescargasCardO, Long>
 	@Query(value = "SELECT TOP (100) * " +
             "FROM [INTELIBUS].[dbo].[tblDescargasCARD] " +
             "WHERE  intVarControl = :varControl " +
-            "ORDER BY id desc", 
+            "ORDER BY id", 
             nativeQuery = true)
 Iterable<DescargasCardO> findTopByVarControl(@Param("varControl") Integer varControl); 	
 

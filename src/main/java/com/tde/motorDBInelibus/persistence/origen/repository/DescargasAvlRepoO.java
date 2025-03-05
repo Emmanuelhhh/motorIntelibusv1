@@ -21,7 +21,7 @@ public interface DescargasAvlRepoO extends CrudRepository<DescargasAvlO, Long> {
 			@Query(value = "SELECT TOP (100) * " +
             "FROM [INTELIBUS].[dbo].[tblDescargasAVL] " +
             "WHERE  intVarControl = :varControl " +
-            "ORDER BY id desc", 
+            "ORDER BY id", 
             nativeQuery = true)
 			Iterable<DescargasAvlO> findTopByVarControl(@Param("varControl") Integer varControl);
 

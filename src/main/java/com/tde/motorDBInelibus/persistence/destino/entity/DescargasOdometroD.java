@@ -13,10 +13,15 @@ import java.io.Serializable;
 @Data
 @Entity
 @Immutable
-@Table(name = "descargas_odometro")
+@Table(name = "tbldescargasodometro")
 public class DescargasOdometroD implements Serializable {
 
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
     @Column(name = "id_dgprs") 
     private Long idDgprs;
 

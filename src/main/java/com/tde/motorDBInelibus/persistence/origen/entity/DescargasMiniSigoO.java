@@ -26,8 +26,8 @@ public class DescargasMiniSigoO  implements Serializable {
     @Column(name="strmodem_id")
     private String id_modem;
 
-    @Column(name="intciudad")
-    private Integer idCiudad;
+    //@Column(name="intciudad")
+    //private Integer idCiudad;
 
     @Column(name="intruta")
     private Integer idRuta;
