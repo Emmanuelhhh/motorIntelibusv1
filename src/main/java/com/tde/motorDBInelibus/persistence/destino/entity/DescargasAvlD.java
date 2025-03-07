@@ -1,21 +1,10 @@
 package com.tde.motorDBInelibus.persistence.destino.entity;
 
-
 import lombok.Data;
-
 import org.hibernate.annotations.Immutable;
-
-
-
-import java.time.LocalDateTime;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
+import javax.persistence.*;
 import java.io.Serializable;
-
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -23,50 +12,49 @@ import java.io.Serializable;
 @Table(name = "tbldescargasavl")
 public class DescargasAvlD implements Serializable {
 
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
+    @Id
     @Column(name = "id")
     private Long id;
 
     @Column(name = "inttipoavl")
-    private Integer tipoAvl;
+    private Integer inttipoavl;
 
     @Column(name = "strmodemid")
-    private String idModem;
+    private String strmodemid;
 
     @Column(name = "flongitud_grad")
-    private Float longitudGrad;
+    private Float flongitud_grad;
 
     @Column(name = "flatitud_grad")
-    private Float latitudGrad;
+    private Float flatitud_grad;
 
     @Column(name = "intvelocidad")
-    private Integer velocidad;
+    private Integer intvelocidad;
 
     @Column(name = "intnum_sat")
-    private Integer numSat;
+    private Integer intnum_sat;
 
     @Column(name = "dfecha_hora_sat")
-    private LocalDateTime fechaHoraSat;
+    private LocalDateTime dfecha_hora_sat;
 
     @Column(name = "inttipo_evento")
-    private Integer tipoEvento;
+    private Integer inttipo_evento;
 
     @Column(name = "intvariable1")
-    private Integer variable1;
+    private Integer intvariable1;
 
     @Column(name = "dfechahoracomputadora")
-    private LocalDateTime fechaHoraComputadora;
+    private LocalDateTime dfechahoracomputadora;
 
     @Column(name = "intvarcontrol")
-    private Integer varControl;
+    private Integer intvarcontrol;
 
     @Column(name = "intstatus")
-    private Integer status;
+    private Integer intstatus;
 
+    @Column(name = "id_uni")
+    private Long id_uni;
 
 }

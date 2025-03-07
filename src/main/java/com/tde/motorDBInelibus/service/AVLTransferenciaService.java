@@ -57,17 +57,17 @@ private DescargasAvlD convertirADestino(DescargasAvlO origen) {
     DescargasAvlD destino = new DescargasAvlD();
 
     destino.setId(origen.getId());
-    destino.setTipoAvl(origen.getTipoAvl());
-    destino.setIdModem(origen.getIdModem());
-    destino.setLongitudGrad(origen.getLongitudGrad());
-    destino.setLatitudGrad(origen.getLatidudGrad());
-    destino.setVelocidad(origen.getVelocidad());
-    destino.setNumSat(origen.getNumSat());
-    destino.setFechaHoraSat(origen.getFechaHoraSat());
-    destino.setTipoEvento(origen.getTipoEvento());
-    destino.setVariable1(origen.getVariable1());
-    destino.setFechaHoraComputadora(origen.getFechaHoraComputadora());
-    destino.setVarControl(origen.getVarControl());
+    destino.setInttipoavl(origen.getTipoAvl());
+    destino.setStrmodemid(origen.getIdModem());
+    destino.setFlongitud_grad(origen.getLongitudGrad());
+    destino.setFlatitud_grad(origen.getLatidudGrad());
+    destino.setIntvelocidad(origen.getVelocidad());
+    destino.setIntnum_sat(origen.getNumSat());
+    destino.setDfecha_hora_sat(origen.getFechaHoraSat());
+    destino.setInttipo_evento(origen.getTipoEvento());
+    destino.setIntvariable1(origen.getVariable1());
+    destino.setDfechahoracomputadora(origen.getFechaHoraComputadora());
+    destino.setIntvarcontrol(origen.getVarControl());
 
     // Campos adicionales en DescargasAvlD que no están en DescargasAvlO
     // Puedes inicializar `avl` como null o asignar un valor predeterminado
