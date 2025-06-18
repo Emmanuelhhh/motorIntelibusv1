@@ -1,4 +1,4 @@
-package com.tde.motorDBInelibus.persistence.origen.repository;
+package com.tde.motorDBInelibus.persistence.origencard.repository;
 
 
 
@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.tde.motorDBInelibus.persistence.origen.entity.DescargasCardO;
+import com.tde.motorDBInelibus.persistence.origencard.entity.DescargasCardO;
 
 
 

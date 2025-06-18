@@ -14,7 +14,7 @@ import com.tde.motorDBInelibus.persistence.origen.entity.DescargasOdometroO;
 public interface DescargasOdometroRepoO extends CrudRepository<DescargasOdometroO, Long>{
 
 	
-	@Query(value = "SELECT TOP (100) * " +
+	@Query(value = "SELECT TOP (1) * " +
             "FROM [INTELIBUS].[dbo].[tblDescargasOdometro] " +
             "WHERE  intVarControl = :varControl " +
             "ORDER BY [id_DGPRS] ", 

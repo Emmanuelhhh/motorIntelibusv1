@@ -9,12 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-
+import com.tde.motorDBInelibus.service.AVLCardTransferenciaService;
 import com.tde.motorDBInelibus.service.AVLTransferenciaService;
+import com.tde.motorDBInelibus.service.BarrasTranferenciaService;
 import com.tde.motorDBInelibus.service.MSTranferenciaService;
 import com.tde.motorDBInelibus.service.OdometroTransferenciaService;
 import com.tde.motorDBInelibus.service.StoredProcedureServiceJPA;
 import com.tde.motorDBInelibus.service.CardTransferenciaService;
+import com.tde.motorDBInelibus.service.DescargasValidadorSamTransferenciaService;
 import com.tde.motorDBInelibus.service.EventoMiniSigoTransferenciaService;
 
 import org.slf4j.Logger;
@@ -24,6 +26,13 @@ public class TransferenciaJob {
 
     @Autowired
     private AVLTransferenciaService avltransferenciaService;
+    
+    @Autowired
+    private AVLCardTransferenciaService avlCardtransferenciaService;
+    
+    @Autowired
+    private BarrasTranferenciaService barrasTranferenciaService;
+    
     @Autowired
     private MSTranferenciaService msTranferenciaService;
     
@@ -31,8 +40,8 @@ public class TransferenciaJob {
     @Autowired
     private OdometroTransferenciaService odometroTransferenciaService;
     
-    @Autowired 
-    private CardTransferenciaService cardTransferenciaService;
+   @Autowired 
+   private DescargasValidadorSamTransferenciaService cardTransferenciaService;
     
     @Autowired
     private EventoMiniSigoTransferenciaService eventoMiniSigoTransferenciaService;
@@ -49,13 +58,22 @@ public class TransferenciaJob {
     @Scheduled(cron = "0 * * * * ?")
     public void ejecutarTransferencia() {
         log.info("Inicia proceso de transferencia de datos");
-
-        scheduledExecutorService.schedule(() -> executeSafely(() -> avltransferenciaService.transferirDatos(7)), 0, TimeUnit.SECONDS);
-        scheduledExecutorService.schedule(() -> executeSafely(() -> msTranferenciaService.minisigotransferirDatos(7)), 30, TimeUnit.SECONDS);
-       // scheduledExecutorService.schedule(() -> executeSafely(() -> cardTransferenciaService.tranferirDatos(7)), 60, TimeUnit.SECONDS);
-       // scheduledExecutorService.schedule(() -> executeSafely(() -> eventoMiniSigoTransferenciaService.transferirDatos(7)), 90, TimeUnit.SECONDS);
+        //BARRAS Y CAMARA 
+       scheduledExecutorService.schedule(() -> executeSafely(() -> avltransferenciaService.transferirDatos(7)), 0, TimeUnit.SECONDS);
+       scheduledExecutorService.schedule(() -> executeSafely(() -> msTranferenciaService.minisigotransferirDatos(7)), 30, TimeUnit.SECONDS);
+       
+       // scheduledExecutorService.schedule(() -> executeSafely(() -> barrasTranferenciaService.transferirDatos(7)), 30, TimeUnit.SECONDS);
         scheduledExecutorService.schedule( ()  -> executeSafely(() -> odometroTransferenciaService.transferirDatos(7)), 30, TimeUnit.SECONDS);
-        scheduledExecutorService.schedule(()   -> executeSafely(() -> storedProcedureServiceJPA.ejecutarStoredProcedure()),60, TimeUnit.SECONDS);
+        
+        //TARJETAS
+         scheduledExecutorService.schedule(() -> executeSafely(() -> avlCardtransferenciaService.transferirDatos(7)), 0, TimeUnit.SECONDS);
+        scheduledExecutorService.schedule(() -> executeSafely(() -> cardTransferenciaService.transferirDatos(7)), 60, TimeUnit.SECONDS); 
+     // scheduledExecutorService.schedule(() -> executeSafely(() -> avlCardtransferenciaService.transferirDatos(7)), 0, TimeUnit.SECONDS); 
+        
+       
+            
+        // scheduledExecutorService.schedule(() -> executeSafely(() -> eventoMiniSigoTransferenciaService.transferirDatos(7)), 90, TimeUnit.SECONDS);
+      //  scheduledExecutorService.schedule(()   -> executeSafely(() -> storedProcedureServiceJPA.ejecutarStoredProcedure()),60, TimeUnit.SECONDS);
         
         log.info("Tareas programadas");
     }

@@ -29,7 +29,7 @@ public class AVLTransferenciaService {
         List<DescargasAvlO> registros = new ArrayList<>();
         descargasAvlRepoO.findTopByVarControl(status).forEach(registros::add);
 
-        System.out.println("REGISTROS AVL ENCONTRADOS  " + registros);
+        System.out.println("REGISTROS AVL BARRAS DESCARGAS AVL BARRAS  " + registros);
 
         // Lista para almacenar los registros que fallaron
         List<DescargasAvlO> registrosFallidos = new ArrayList<>();

@@ -10,9 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.tde.motorDBInelibus.persistence.destino.entity.DescargasCardD;
 import com.tde.motorDBInelibus.persistence.destino.repository.DescargasCardRepoD;
-
-import com.tde.motorDBInelibus.persistence.origen.entity.DescargasCardO;
-import com.tde.motorDBInelibus.persistence.origen.repository.DescargasCardRepoO;
+import com.tde.motorDBInelibus.persistence.origencard.entity.DescargasCardO;
+import com.tde.motorDBInelibus.persistence.origencard.repository.DescargasCardRepoO;
 
 @Service
 public class CardTransferenciaService {
@@ -57,21 +56,21 @@ public class CardTransferenciaService {
 	    DescargasCardD destino = new DescargasCardD();
 
 	  
-	    destino.setIdGprs(origen.getIdGprs());
+	    destino.setId(origen.getIdGprs());
 	    destino.setValidador(origen.getValidador());
 	    destino.setIdTarjeta(origen.getIdTarjeta());
 	    destino.setTipoTarjeta(origen.getTipoTarjeta());
-	    destino.setTipoEvento(origen.getTipoEvento());
-	    destino.setSaldoInicial(origen.getSaldoInicial());
-	    destino.setSaldoFinal(origen.getSaldoFinal());
-	    destino.setFechaEvento(origen.getFechaEvento());
-	    destino.setPuntoVenta(origen.getPuntoVenta());
+	    destino.setTipoEventoTarjeta(origen.getTipoEvento());
+	    destino.setSaldoInicialTarjeta(origen.getSaldoInicial());
+	    destino.setSaldoFinalTarjeta(origen.getSaldoFinal());
+	    destino.setFechaEventoTarjeta(origen.getFechaEvento());
+	    destino.setIdPuntoVenta(origen.getPuntoVenta());
 	    destino.setFolioVenta(origen.getFolioVenta());
 	    destino.setVarControl(origen.getVarControl());
 	    destino.setStatus(origen.getStatus());
 	    destino.setFechaAvl(origen.getFechaAvl());
 	    destino.setNumOperador(origen.getNumOperador());
-	    destino.setFolio(origen.getFolio());
+	    destino.setFolioTarjeta(origen.getFolio());
 	    destino.setFrameEvento(origen.getFrameEvento());
 	    destino.setRuta(origen.getRuta());
 	    destino.setContadorCiclicoTrans(origen.getContadorCiclicoTrans());
@@ -81,7 +80,7 @@ public class CardTransferenciaService {
 	    destino.setIdEvento(origen.getIdEvento());
 	    destino.setUid(origen.getUid());
 	    destino.setConsecutivoSam(origen.getConsecutivoSam());
-	    destino.setModem(origen.getModem());
+	    destino.setModemId(origen.getModem());
 	    
 
 	    return destino;

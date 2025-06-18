@@ -26,8 +26,8 @@ public class DescargasMiniSigoO  implements Serializable {
     @Column(name="strmodem_id")
     private String id_modem;
 
-    //@Column(name="intciudad")
-    //private Integer idCiudad;
+    @Column(name="intciudad")
+    private Integer idCiudad;
 
     @Column(name="intruta")
     private Integer idRuta;
@@ -35,11 +35,11 @@ public class DescargasMiniSigoO  implements Serializable {
     @Column(name="intidminisigo")
     private Integer idIntelibus;
 
-    @Column(name="intmodooperacion")
+    @Column(name="intnumoperdor")
     private Integer idOperador;
 
-    //@Column(name="intModoOperacion")
-    //private Integer modoOperacion;
+    @Column(name="intmodooperacion")
+    private Integer modoOperacion;
 
     @Column(name="intsubidas_barra1")
     private Integer subidasBarra1;

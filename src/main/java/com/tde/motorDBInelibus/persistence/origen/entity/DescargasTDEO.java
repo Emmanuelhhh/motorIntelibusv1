@@ -21,11 +21,16 @@ import java.io.Serializable;
 @Entity
 @Immutable
 @Table(name="tbldescargastde")
-public class DescargasTDE implements Serializable{
+public class DescargasTDEO implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @Column(name="id_dgprs")
     private Long id;
 	
 	@Column(name="inttipoframe")
@@ -79,9 +84,7 @@ public class DescargasTDE implements Serializable{
 	@Column(name="strmodem_id")
 	private String id_modem;
 	
-	@Column(name="dfechahorainsert")
+	@Column(name="dfehahorainsert")            
 	private LocalDateTime horaInsert;
 	
-
-
 }

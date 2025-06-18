@@ -1,5 +1,5 @@
 server:
- port: 8083
+ port: 8085
 spring:
   datasource:
    
@@ -11,15 +11,18 @@ spring:
       password: sa
       driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
       
-      
+    
     destino:
-      jdbc-url: jdbc:sqlserver://131.1.0.93:1433;databaseName=INTELIBUS;encrypt=true;trustServerCertificate=true
+      jdbc-url: jdbc:sqlserver://131.1.0.130;databaseName=INTELIBUS;encrypt=true;trustServerCertificate=true
       username: sa
-      password: Tda21g0*
-      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-     
-      
-
+      password: sa
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver 
+    
+    origencard:
+      jdbc-url: jdbc:sqlserver://131.1.0.129;databaseName=intelibus;encrypt=true;trustServerCertificate=true	
+      username: sa
+      password: sa
+      drive-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
       
   jpa:
    

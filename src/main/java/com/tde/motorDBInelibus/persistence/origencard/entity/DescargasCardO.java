@@ -1,4 +1,4 @@
-package com.tde.motorDBInelibus.persistence.origen.entity;
+package com.tde.motorDBInelibus.persistence.origencard.entity;
 
 
 import lombok.Data;
@@ -22,6 +22,9 @@ import java.io.Serializable;
 @Table(name="tbldescargascard")
 public class DescargasCardO implements Serializable{
 	
+	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")

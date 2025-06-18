@@ -13,7 +13,7 @@ import java.io.Serializable;
 @Data
 @Entity
 @Immutable
-@Table(name = "tbldescargasodometro")
+@Table(name = "tbldescargasodometro_barras")
 public class DescargasOdometroD implements Serializable {
 
     /**

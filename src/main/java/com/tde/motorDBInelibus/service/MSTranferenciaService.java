@@ -59,11 +59,13 @@ public class MSTranferenciaService {
 		
 		destino.setIdDGPRS(origen.getIdDGPRS());
 		destino.setIdModem(origen.getId_modem());
-		//destino.setIdCiudad(origen.getIdCiudad());
+		destino.setIdCiudad(origen.getIdCiudad());
 		destino.setIdRuta(origen.getIdRuta());
-		
 		destino.setIdIntelibus(origen.getIdIntelibus());
+		
 		destino.setIdOperador(origen.getIdOperador());
+		destino.setModoOperacion(origen.getModoOperacion());
+		
 		destino.setSubidasBarra1(origen.getSubidasBarra1());
 		destino.setBajadasBarra1(origen.getBajadasBarra1());
 		destino.setBloqueosBarra1(origen.getBloqueosBarra1());

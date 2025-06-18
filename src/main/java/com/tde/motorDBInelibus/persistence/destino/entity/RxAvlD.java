@@ -11,7 +11,12 @@ import java.time.LocalDateTime;
 @Table(name = "rxavl")
 public class RxAvlD implements Serializable {
 
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
     @Column(name = "id", nullable = false)
     private Long id;
 

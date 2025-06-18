@@ -11,7 +11,12 @@ import java.time.LocalDateTime;
 @Table(name = "evento_mini_sigo")
 public class EventoMiniSigoD implements Serializable {
 
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
     @Column(name = "id_dgprs", nullable = false)
     private Long idDgprs;
 

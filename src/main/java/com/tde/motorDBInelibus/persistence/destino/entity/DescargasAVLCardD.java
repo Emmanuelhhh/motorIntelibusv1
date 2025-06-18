@@ -9,8 +9,8 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 @Immutable
-@Table(name = "tbldescargasavl_barras")
-public class DescargasAvlD implements Serializable {
+@Table(name = "tbldescargasavl_card")
+public class DescargasAVLCardD implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

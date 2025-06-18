@@ -17,15 +17,20 @@ import javax.persistence.Table;
 @Table(name = "tbldescarga_minisigo")
 public class DescargasMiniSigoD implements Serializable {
 
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
     @Column(name = "id_dgprs")
     private Long idDGPRS;
 
     @Column(name = "strmodem_id")
     private String idModem;
 
-   // @Column(name = "intciudad")
-   //	 private Integer idCiudad;
+    @Column(name = "intciudad")
+   	 private Integer idCiudad;
 
     @Column(name = "intruta")
     private Integer idRuta;
@@ -33,8 +38,11 @@ public class DescargasMiniSigoD implements Serializable {
     @Column(name = "intidminisigo")
     private Integer idIntelibus;
 
-    @Column(name = "intmodooperacion")
+    @Column(name="intnumoperador")
     private Integer idOperador;
+
+    @Column(name="intmodooperacion")
+    private Integer modoOperacion;
 
     @Column(name = "intsubidas_barra1")
     private Integer subidasBarra1;
