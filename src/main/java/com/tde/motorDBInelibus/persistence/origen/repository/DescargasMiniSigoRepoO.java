@@ -14,7 +14,7 @@ public interface DescargasMiniSigoRepoO extends CrudRepository<DescargasMiniSigo
 
 	
 	
-	@Query(value = "SELECT TOP (1000) * " +
+	@Query(value = "SELECT TOP (2000) * " +
             "FROM [INTELIBUS].[dbo].[tblDescarga_MiniSigo] " +
             "WHERE  intVarControl = :varControl " +
             "ORDER BY id_DGPRS", 

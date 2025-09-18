@@ -18,7 +18,7 @@ public interface DescargasAvlRepoO extends CrudRepository<DescargasAvlO, Long> {
 	
 	   // @Query("SELECT  a FROM OpeDescargasAVL a WHERE a.varControl = :varControl ORDER BY a.fechaHoraComputadora ASC")
 
-			@Query(value = "SELECT TOP (1000) * " +
+			@Query(value = "SELECT TOP (2000) * " +
             "FROM [INTELIBUS].[dbo].[tblDescargasAVL] " +
             "WHERE  intVarControl = :varControl " +
             "ORDER BY id", 

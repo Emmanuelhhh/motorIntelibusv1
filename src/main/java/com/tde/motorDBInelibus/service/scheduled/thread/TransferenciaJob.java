@@ -60,15 +60,15 @@ public class TransferenciaJob {
         log.info("Inicia proceso de transferencia de datos");
         //BARRAS Y CAMARA 
        scheduledExecutorService.schedule(() -> executeSafely(() -> avltransferenciaService.transferirDatos(7)), 0, TimeUnit.SECONDS);
-       scheduledExecutorService.schedule(() -> executeSafely(() -> msTranferenciaService.minisigotransferirDatos(7)), 30, TimeUnit.SECONDS);
+      scheduledExecutorService.schedule(() -> executeSafely(() -> msTranferenciaService.minisigotransferirDatos(7)), 30, TimeUnit.SECONDS);
        
        // scheduledExecutorService.schedule(() -> executeSafely(() -> barrasTranferenciaService.transferirDatos(7)), 30, TimeUnit.SECONDS);
         scheduledExecutorService.schedule( ()  -> executeSafely(() -> odometroTransferenciaService.transferirDatos(7)), 30, TimeUnit.SECONDS);
         
         //TARJETAS
          scheduledExecutorService.schedule(() -> executeSafely(() -> avlCardtransferenciaService.transferirDatos(7)), 0, TimeUnit.SECONDS);
-        scheduledExecutorService.schedule(() -> executeSafely(() -> cardTransferenciaService.transferirDatos(7)), 60, TimeUnit.SECONDS); 
-     // scheduledExecutorService.schedule(() -> executeSafely(() -> avlCardtransferenciaService.transferirDatos(7)), 0, TimeUnit.SECONDS); 
+         scheduledExecutorService.schedule(() -> executeSafely(() -> cardTransferenciaService.transferirDatos(7)), 60, TimeUnit.SECONDS); 
+         scheduledExecutorService.schedule(() -> executeSafely(() -> avlCardtransferenciaService.transferirDatos(7)), 0, TimeUnit.SECONDS); 
         
        
             

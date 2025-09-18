@@ -24,7 +24,7 @@ public class DescargasValidadorSamTransferenciaService {
     @Transactional
     public void transferirDatos(Integer varControl) {
         List<DescargasValidadorSamO> registros = new ArrayList<>();
-        descargasValidadorSamRepoO.findTopByVarControl().ifPresent(registros::add);
+        descargasValidadorSamRepoO.findTopByVarControl().forEach(registros::add);
 
         System.out.println("REGISTROS ENCONTRADOS EN VALIDADOR SAM: " + registros.size());
 
