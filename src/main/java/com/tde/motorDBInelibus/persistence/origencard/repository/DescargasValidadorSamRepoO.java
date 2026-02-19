@@ -12,10 +12,10 @@ import com.tde.motorDBInelibus.persistence.origencard.entity.DescargasValidadorS
 @Repository
 public interface DescargasValidadorSamRepoO extends CrudRepository<DescargasValidadorSamO, Long> {
 
-    @Query(value = "SELECT TOP (1000) * " +
+    @Query(value = "SELECT TOP (500) * " +
             "FROM [INTELIBUS].[dbo].[tblDescargasValidadorSAM] " +
-            "WHERE 1=1 " +
-            "ORDER BY id DESC",
+            
+            "ORDER BY id",
             nativeQuery = true)
-    Iterable<DescargasValidadorSamO> findTopByVarControl();
+    Iterable<DescargasValidadorSamO> findTop();
 }

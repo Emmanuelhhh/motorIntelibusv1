@@ -10,7 +10,7 @@ import com.tde.motorDBInelibus.persistence.origen.entity.DescargasTDEO;
 public interface DescargasTdeRepoO extends CrudRepository<DescargasTDEO, Long> {
 
 	
-	@Query(value = "SELECT TOP (5) * " +
+	@Query(value = "SELECT TOP (100) * " +
             "FROM [INTELIBUS].[dbo].[tblDescargasTDE] " +
             "WHERE  intVarControl = :varControl " +
             "ORDER BY id_DGPRS", 

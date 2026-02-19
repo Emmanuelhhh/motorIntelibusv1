@@ -27,7 +27,7 @@ public class EventoMiniSigoTransferenciaService {
         List<EventoMiniSigoO> registros = new ArrayList<>();
         eventoMiniSigoRepoO.findTopByVarControl(status).forEach(registros::add);
 
-        System.out.println("REGISTROS ENCONTRADOS EN EVENTO MINI SIGO: " + registros);
+        System.out.println("REGISTROS ENCONTRADOS EN EVENTO MINI SIGO: " + registros.size());
 
         // Lista para almacenar los registros que fallaron
         List<EventoMiniSigoO> registrosFallidos = new ArrayList<>();

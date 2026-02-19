@@ -28,9 +28,9 @@ public class OdometroTransferenciaService {
 
         List<DescargasOdometroO> registros = new ArrayList<>();
 
-        odometroORepo.findTopByVarControl(status).forEach(registros::add);
+        odometroORepo.findTop().forEach(registros::add);
 
-        System.out.println("REGISTROS ODOMETRO ENCONTRADOS: " + registros);
+        System.out.println("REGISTROS ODOMETRO ENCONTRADOS: " + registros.size());
 
         List<DescargasOdometroO> registrosFallidos = new ArrayList<>();
 

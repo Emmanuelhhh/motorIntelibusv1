@@ -29,7 +29,7 @@ public class CardTransferenciaService {
 	
 	cardO.findTopByVarControl(status).forEach(registros::add);
 	
-	System.out.println("REGISTROS CARD ENCONTRADOS" + registros);
+	System.out.println("REGISTROS CARD ENCONTRADOS" + registros.size());
 	
 	 List<DescargasCardO> registrosFallidos = new ArrayList<>();
 

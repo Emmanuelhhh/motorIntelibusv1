@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.tde.motordbIntelubus'
-version = '0.0.9_S130'
+version = '0.0.14'
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(8)

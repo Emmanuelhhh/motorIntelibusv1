@@ -19,4 +19,12 @@ public interface DescargasOdometroRepoO extends CrudRepository<DescargasOdometro
             "WHERE  intVarControl = :varControl " +
             "ORDER BY [id_DGPRS] ", 
             nativeQuery = true)
-	Iterable<DescargasOdometroO> findTopByVarControl(@Param("varControl") Integer varControl);}
+	Iterable<DescargasOdometroO> findTopByVarControl(@Param("varControl") Integer varControl);
+	
+	@Query(value = "SELECT TOP (500) * " +
+            "FROM [INTELIBUS].[dbo].[tblDescargasOdometro] " +
+           
+            "ORDER BY [id_DGPRS] ", 
+            nativeQuery = true)
+	Iterable<DescargasOdometroO> findTop();
+}

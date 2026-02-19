@@ -24,7 +24,7 @@ public class DescargasValidadorSamTransferenciaService {
     @Transactional
     public void transferirDatos(Integer varControl) {
         List<DescargasValidadorSamO> registros = new ArrayList<>();
-        descargasValidadorSamRepoO.findTopByVarControl().forEach(registros::add);
+        descargasValidadorSamRepoO.findTop().forEach(registros::add);
 
         System.out.println("REGISTROS ENCONTRADOS EN VALIDADOR SAM: " + registros.size());
 
@@ -43,7 +43,7 @@ public class DescargasValidadorSamTransferenciaService {
         registros.removeAll(registrosFallidos);
         descargasValidadorSamRepoO.deleteAll(registros);
 
-        System.out.println("FIN DEL PROCESO DE TRANSFERENCIA DE VALIDADOR SAM");
+        System.out.println("FIN DEL PROCESO VALIDADOR SAM");
     }
 
     private DescargasValidadorSamD convertirADestino(DescargasValidadorSamO origen) {

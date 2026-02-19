@@ -27,9 +27,9 @@ public class AVLTransferenciaService {
     public void transferirDatos(Integer status) {
         // Convertimos el Iterable a una lista para poder manipularlo
         List<DescargasAvlO> registros = new ArrayList<>();
-        descargasAvlRepoO.findTopByVarControl(status).forEach(registros::add);
+        descargasAvlRepoO.findTop().forEach(registros::add);
 
-        System.out.println("REGISTROS AVL BARRAS DESCARGAS AVL BARRAS  " + registros);
+        System.out.println("REGISTROS AVL BARRAS DESCARGAS AVL BARRAS  " + registros.size());
 
         // Lista para almacenar los registros que fallaron
         List<DescargasAvlO> registrosFallidos = new ArrayList<>();
@@ -48,7 +48,7 @@ public class AVLTransferenciaService {
         registros.removeAll(registrosFallidos);
         descargasAvlRepoO.deleteAll(registros);
 
-        System.out.println("FIN DEL PROCESO");
+        System.out.println("FIN DEL PROCESO AVL BARRAS");
     }
 
     
