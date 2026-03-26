@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 
 import com.tde.motorDBInelibus.service.AVLCardTransferenciaService;
 import com.tde.motorDBInelibus.service.AVLTransferenciaService;
-import com.tde.motorDBInelibus.service.BarrasTranferenciaService;
 import com.tde.motorDBInelibus.service.MSTranferenciaService;
 import com.tde.motorDBInelibus.service.OdometroTransferenciaService;
 import com.tde.motorDBInelibus.service.DescargasValidadorSamTransferenciaService;
@@ -29,9 +28,6 @@ public class TransferenciaJob {
 
     @Autowired
     private AVLCardTransferenciaService avlCardtransferenciaService;
-
-    @Autowired
-    private BarrasTranferenciaService barrasTranferenciaService;
 
     @Autowired
     private MSTranferenciaService msTranferenciaService;
@@ -55,14 +51,13 @@ public class TransferenciaJob {
 
         log.info("Inicia proceso de transferencia de datos");
 
-        //submit(() -> avltransferenciaService.transferirDatos(7));
-        //submit(() -> msTranferenciaService.minisigotransferirDatos(7));
-       // submit(() -> odometroTransferenciaService.transferirDatos(7));
+        submit(() -> avltransferenciaService.transferirDatos());
+        submit(() -> msTranferenciaService.minisigotransferirDatos());
+        submit(() -> odometroTransferenciaService.transferirDatos());
 
-        submit(() -> avlCardtransferenciaService.transferirDatos(7));
-       // submit(() -> cardTransferenciaService.transferirDatos(7));
+        submit(() -> avlCardtransferenciaService.transferirDatos());
+        submit(() -> cardTransferenciaService.transferirDatos());
 
-        // submit(() -> barrasTranferenciaService.transferirDatos(7));
         // submit(() -> eventoMiniSigoTransferenciaService.transferirDatos(7));
 
         log.info("Tareas enviadas al pool");

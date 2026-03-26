@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.tde.motordbIntelubus'
-version = '0.0.14'
+version = '0.0.16'
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(8)
@@ -40,4 +40,8 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs << "-Xlint:deprecation"
 }

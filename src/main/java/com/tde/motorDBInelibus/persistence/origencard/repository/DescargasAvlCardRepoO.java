@@ -17,29 +17,9 @@ import com.tde.motorDBInelibus.persistence.origencard.entity.DescargasAvlCardO;
 public interface DescargasAvlCardRepoO extends CrudRepository<DescargasAvlCardO, Long> {
 
 	
-	
-	   // @Query("SELECT  a FROM OpeDescargasAVL a WHERE a.varControl = :varControl ORDER BY a.fechaHoraComputadora ASC")
-
-			@Query(value = "SELECT TOP (1) * " +
-            "FROM [INTELIBUS].[dbo].[tblDescargasAVL] " +
-            "ORDER BY id", 
-            nativeQuery = true)
-			Iterable<DescargasAvlCardO> findTopByVarControl();
-
-			
-			@Query(value = "SELECT TOP (500) * " +
-		            "FROM [INTELIBUS].[dbo].[tblDescargasAVL] " +
-		            "ORDER BY id", 
-		            nativeQuery = true)
-					Iterable<DescargasAvlCardO> findTop();
-
-			List<DescargasAvlCardO> findByIdGreaterThanOrderByIdAsc(
+			List<DescargasAvlCardO> findByIdGreaterThan(
 			        Long lastId,
 			        Pageable pageable
 			);
-			/*@Transactional
-			 @Modifying
-			    @Query("UPDATE DescargasAvl d SET d.status = 'SENT' WHERE d.id = ?1")
-			    void markAsSendVarControl(Long id);
-*/
+
 }

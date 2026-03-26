@@ -6,7 +6,7 @@ spring:
     
     #Desarrollo 
     origen:
-      jdbc-url: jdbc:sqlserver://131.1.0.137:1433;databaseName=INTELIBUS;encrypt=true;trustServerCertificate=true
+      jdbc-url: jdbc:sqlserver://131.1.0.137;databaseName=INTELIBUS;encrypt=true;trustServerCertificate=true
       username: sa
       password: sa
       driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
@@ -22,7 +22,7 @@ spring:
       jdbc-url: jdbc:sqlserver://131.1.0.129;databaseName=intelibus;encrypt=true;trustServerCertificate=true	
       username: sa
       password: sa
-      drive-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
       
   jpa:
    

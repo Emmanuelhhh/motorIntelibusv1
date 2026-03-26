@@ -16,22 +16,10 @@ import org.springframework.data.domain.Pageable;
 public interface DescargasMiniSigoRepoO extends CrudRepository<DescargasMiniSigoO, Long> {
 
 	
-	List<DescargasMiniSigoO> findByValControlAndIdDGPRSGreaterThan(Integer valControl, Long lastId, Pageable pageable);
-
-	//se creo un metodo son el filtro valControl
-	List<DescargasMiniSigoO> findByIdDGPRSGreaterThanOrderByIdDGPRSAsc(
+	List<DescargasMiniSigoO> findByIdDGPRSGreaterThan(
 	        Long lastId,
 	        Pageable pageable
 	);
 
-	@Query(value = "SELECT TOP (100) * " +
-            "FROM [INTELIBUS].[dbo].[tblDescarga_MiniSigo] " +
-            "WHERE  intVarControl = :varControl " +
-            "ORDER BY id_DGPRS", 
-            nativeQuery = true)
-			Iterable<DescargasMiniSigoO> findTopByVarControl(@Param("varControl") Integer varControl);
-	
-	 @Modifying
-	    @Query("DELETE FROM DescargasMiniSigoO t WHERE t.idDGPRS IN :ids")
-	    int deleteByIdDGprsIn(@Param("ids") List<Long> ids);
+ 
 }

@@ -98,9 +98,6 @@ public class DescargasMiniSigoO  implements Serializable {
     @Column(name="intvarcontrol")
     private Integer valControl;
 
-   /* @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn( name="strModem_ID", referencedColumnName = "serial")
-    private Avl avl;
-*/
+  
 
 }

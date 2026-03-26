@@ -11,8 +11,7 @@ import com.tde.motorDBInelibus.persistence.destino.entity.DescargasMiniSigoD;
 @Repository
 public interface DescargasAVLCardRepoD extends CrudRepository<DescargasAVLCardD,Long>{
 	
-	Optional<DescargasAVLCardD> findById(Long id);
-	
+
 	Optional<DescargasAVLCardD> findTopByOrderByIdDesc();
 
 }

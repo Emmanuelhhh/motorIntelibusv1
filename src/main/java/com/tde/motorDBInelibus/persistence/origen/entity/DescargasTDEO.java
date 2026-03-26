@@ -12,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Immutable;
-import org.springframework.data.convert.ThreeTenBackPortConverters.LocalTimeToDateConverter;
 
 import java.io.Serializable;
 

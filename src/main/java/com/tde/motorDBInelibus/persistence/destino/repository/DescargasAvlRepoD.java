@@ -12,5 +12,7 @@ public interface DescargasAvlRepoD extends CrudRepository<DescargasAvlD , Long> 
 
 	Optional<DescargasAvlD> findById(Long id);
 	
+
+	Optional<DescargasAvlD> findTopByOrderByIdDesc();
 	
 }

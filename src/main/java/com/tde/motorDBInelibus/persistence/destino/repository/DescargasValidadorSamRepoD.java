@@ -14,5 +14,9 @@ import com.tde.motorDBInelibus.persistence.origencard.entity.DescargasValidadorS
 public interface DescargasValidadorSamRepoD extends CrudRepository<DescargasValidadorSamD, Long> {
 
    
-    Optional<DescargasValidadorSamD> findTopByIdDgprs(@Param("idDgprs") Long idDgprs);
+    Optional<DescargasValidadorSamD> findTopByOrderByIdDgprsDesc();
+    
+    @Query(value = "SELECT TOP 1 * FROM tblDescargasValidadorSAM ORDER BY id_DGPRS DESC", 
+    	       nativeQuery = true)
+    	Optional<DescargasValidadorSamD> findMaxIdDgprs();
 }

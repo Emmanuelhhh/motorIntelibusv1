@@ -29,21 +29,21 @@ public class MSTranferenciaService {
     private DescargasMiniSigoRepoD descargasMiniSigoRepoD;
 
     @Transactional
-    public void minisigotransferirDatos(Integer status) {
+    public void minisigotransferirDatos() {
 
         Long lastId = descargasMiniSigoRepoD.findTopByOrderByIdDGPRSDesc()
                 .map(DescargasMiniSigoD::getIdDGPRS)
                 .orElse(0L);
 
-        System.out.println("MS - LAST ID DESTINO: " + lastId);
+        System.out.println(" CONTADORES- LAST ID DESTINO: " + lastId);
 
         // 1) Leer lote incremental (filtrado por status si aplica)
-        List<DescargasMiniSigoO> origen = leerLoteOrigen(lastId, status);
+        List<DescargasMiniSigoO> origen = leerLoteOrigen(lastId);
 
-        System.out.println("REGISTROS MS ENCONTRADOS  " + origen.size());
+        System.out.println("REGISTROS CONTADORES ENCONTRADOS  " + origen.size());
         if (origen.isEmpty()) {
-            System.out.println("MS - Sin registros nuevos para transferir.");
-            System.out.println("FIN DEL PROCESO MS");
+            System.out.println("CONTADORES- Sin registros nuevos para transferir.");
+            System.out.println("FIN DEL PROCESO CONTADORES");
             return;
         }
 
@@ -63,7 +63,7 @@ public class MSTranferenciaService {
             insertados = destino.size();
 
         } catch (DataIntegrityViolationException bulkEx) {
-            System.err.println("MS - saveAll falló (posibles duplicados). Fallback a inserción individual. Detalle: "
+            System.err.println(" CONTADORES- saveAll falló (posibles duplicados). Fallback a inserción individual. Detalle: "
                     + bulkEx.getMostSpecificCause().getMessage());
 
             for (DescargasMiniSigoD d : destino) {
@@ -74,33 +74,26 @@ public class MSTranferenciaService {
                     duplicados++; // idempotencia por PK/Unique
                 } catch (Exception e) {
                     fallidos++;
-                    System.err.println("MS - Error insertando idDGPRS=" + d.getIdDGPRS() + ". Detalle: " + e.getMessage());
+                    System.err.println(" CONTADORES- Error insertando idDGPRS=" + d.getIdDGPRS() + ". Detalle: " + e.getMessage());
                 }
             }
         }
 
         Long maxIdLote = obtenerMaxId(origen).orElse(lastId);
 
-        System.out.println("MS - Leídos: " + origen.size()
+        System.out.println(" CONTADORES- Leídos: " + origen.size()
                 + " | Insertados: " + insertados
                 + " | Duplicados: " + duplicados
                 + " | Fallidos: " + fallidos
                 + " | MaxIdLote: " + maxIdLote);
 
-        System.out.println("FIN DEL PROCESO MS");
+        System.out.println("FIN DEL PROCESO CONTADORES");
     }
 
-    private List<DescargasMiniSigoO> leerLoteOrigen(Long lastId, Integer status) {
+    private List<DescargasMiniSigoO> leerLoteOrigen(Long lastId) {
         Pageable page = PageRequest.of(0, BATCH_SIZE, Sort.by(Sort.Direction.ASC, "idDGPRS"));
-
-        // Si tu "status" realmente es "valControl" (como en tu convertor original), úsalo aquí:
-        // return descargasMiniSigoRepoO.findByValControlAndIdDGPRSGreaterThanOrderByIdDGPRSAsc(status, lastId, page);
-
-        // Si NO quieres filtrar por status, usa esta:
-        // return descargasMiniSigoRepoO.findByIdDGPRSGreaterThanOrderByIdDGPRSAsc(lastId, page);
-
-      
-        return descargasMiniSigoRepoO.findByIdDGPRSGreaterThanOrderByIdDGPRSAsc(lastId, page);
+        
+        return descargasMiniSigoRepoO.findByIdDGPRSGreaterThan(lastId, page);
     }
 
     private Optional<Long> obtenerMaxId(List<DescargasMiniSigoO> registros) {

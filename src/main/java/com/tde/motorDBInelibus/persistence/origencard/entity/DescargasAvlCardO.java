@@ -23,21 +23,16 @@ import java.io.Serializable;
 public class  DescargasAvlCardO implements Serializable{
 
    
-	//private static final long serialVersionUID = 1L;
+
 
 
 	@Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private Long id;
 
 
     @Column(name="inttipoavl")
     private Integer tipoAvl;
-
-    // @ManyToOne(fetch = FetchType.LAZY)
-    //@JoinColumn( name="strModem_ID", referencedColumnName = "serial")
-    //private Avl avl;
     
     @Column(name="strmodemid")
     private String idModem;
