@@ -51,12 +51,12 @@ public class TransferenciaJob {
 
         log.info("Inicia proceso de transferencia de datos");
 
-        submit(() -> avltransferenciaService.transferirDatos());
-        submit(() -> msTranferenciaService.minisigotransferirDatos());
-        submit(() -> odometroTransferenciaService.transferirDatos());
+       // submit(() -> avltransferenciaService.transferirDatos());
+       // submit(() -> msTranferenciaService.minisigotransferirDatos());
+       // submit(() -> odometroTransferenciaService.transferirDatos());
 
         submit(() -> avlCardtransferenciaService.transferirDatos());
-        submit(() -> cardTransferenciaService.transferirDatos());
+       // submit(() -> cardTransferenciaService.transferirDatos());
 
         // submit(() -> eventoMiniSigoTransferenciaService.transferirDatos(7));
 

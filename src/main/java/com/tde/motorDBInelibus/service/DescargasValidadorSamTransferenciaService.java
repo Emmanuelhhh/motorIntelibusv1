@@ -19,7 +19,6 @@ import com.tde.motorDBInelibus.persistence.destino.repository.DescargasValidador
 
 @Service
 public class DescargasValidadorSamTransferenciaService {
-    private static final int BATCH_SIZE = 500; // ajusta a tu carga/ventana
 
     @Autowired
     private DescargasValidadorSamRepoO descargasValidadorSamRepoO;
@@ -29,14 +28,11 @@ public class DescargasValidadorSamTransferenciaService {
 
     @Transactional
     public void transferirDatos() {
-        Long lastId = descargasValidadorSamRepoD.findTopByOrderByIdDgprsDesc()
-                .map(DescargasValidadorSamD::getIdDgprs)
-                .orElse(0L);
-        System.out.println("VALIDADOR SAM - LAST ID DESTINO: " + lastId);
        
-        List<DescargasValidadorSamO> origen = leerLoteOrigen(lastId);
+       
+        List<DescargasValidadorSamO> origen = leerLoteOrigen();
         
-        System.out.println("VALIDADOR SAM - REGISTROS ENCONTRADOS: " + origen.size());
+        
         
         if (origen.isEmpty()) {
             System.out.println("VALIDADOR SAM - Sin registros nuevos para transferir.");
@@ -57,6 +53,8 @@ public class DescargasValidadorSamTransferenciaService {
         try {
             descargasValidadorSamRepoD.saveAll(destino);
             insertados = destino.size();
+            origen.forEach(r -> r.setVarControl(0));
+            descargasValidadorSamRepoO.saveAll(origen);
             
            
         } catch (DataIntegrityViolationException bulkEx) {
@@ -65,59 +63,50 @@ public class DescargasValidadorSamTransferenciaService {
             
             List<DescargasValidadorSamO> origenEliminar = new ArrayList<>();
             
+            
+            
+            List<DescargasValidadorSamO> procesados = new ArrayList<>();
+
             for (DescargasValidadorSamD d : destino) {
                 try {
-                    descargasValidadorSamRepoD.save(d);
+                	descargasValidadorSamRepoD.save(d);
                     insertados++;
-                    
-                    // Buscar y agregar a la lista de eliminación el registro correspondiente
-                    Optional<DescargasValidadorSamO> origenOpt = origen.stream()
+
+                    origen.stream()
                         .filter(o -> o.getId().equals(d.getId()))
-                        .findFirst();
-                    
-                    if (origenOpt.isPresent()) {
-                        origenEliminar.add(origenOpt.get());
-                    }
-                    
+                        .findFirst()
+                        .ifPresent(procesados::add);
+
                 } catch (DataIntegrityViolationException dup) {
                     duplicados++;
-                    System.err.println("VALIDADOR SAM - Registro duplicado id=" + d.getId());
                 } catch (Exception e) {
                     fallidos++;
-                    System.err.println("VALIDADOR SAM - Error insertando id=" + d.getId() + ". Detalle: " + e.getMessage());
                 }
             }
+
+            procesados.forEach(r -> r.setVarControl(0));
+            descargasValidadorSamRepoO.saveAll(procesados);
             
            
         }
         
-        Long maxIdLote = obtenerMaxId(origen).orElse(lastId);
+       
 
         System.out.println("VALIDADOR SAM - Leidos: " + origen.size()
                 + " | Insertados: " + insertados
                 + " | Duplicados: " + duplicados
-                + " | Fallidos: " + fallidos
-                + " | MaxIdLote: " + maxIdLote);
+                + " | Fallidos: " + fallidos);
         System.out.println("VALIDADOR SAM - FIN DEL PROCESO");
     }
 
-    private List<DescargasValidadorSamO> leerLoteOrigen(Long lastId) {
-        Pageable page = PageRequest.of(0, BATCH_SIZE, Sort.by(Sort.Direction.ASC, "idDgprs"));
-        return descargasValidadorSamRepoO.findByIdDgprsGreaterThan(lastId, page);
+    private List<DescargasValidadorSamO> leerLoteOrigen() {
+    	Pageable pageable = PageRequest.of(0, 500, Sort.by("idDgprs").ascending());
+    	
+    	
+    	return descargasValidadorSamRepoO.findByVarControl(8, pageable);
     }
 
-    private Optional<Long> obtenerMaxId(List<DescargasValidadorSamO> registros) {
-        Long max = null;
-        for (DescargasValidadorSamO r : registros) {
-            if (r.getId() == null) {
-                continue;
-            }
-            if (max == null || r.getId() > max) {
-                max = r.getId();
-            }
-        }
-        return Optional.ofNullable(max);
-    }
+  
 
     private DescargasValidadorSamD convertirADestino(DescargasValidadorSamO origen) {
         DescargasValidadorSamD destino = new DescargasValidadorSamD();

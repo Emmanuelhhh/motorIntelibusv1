@@ -21,5 +21,6 @@ public interface DescargasAvlCardRepoO extends CrudRepository<DescargasAvlCardO,
 			        Long lastId,
 			        Pageable pageable
 			);
-
+			
+			List<DescargasAvlCardO> findByVarControl(Integer control, Pageable pageable);
 }

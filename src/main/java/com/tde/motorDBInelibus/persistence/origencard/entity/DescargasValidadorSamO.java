@@ -81,4 +81,7 @@ public class DescargasValidadorSamO implements Serializable {
 
     @Column(name = "dt_FechaHoraInsert")
     private LocalDateTime fechaHoraInsert;
+    
+    @Column(name = "intVarControl")
+    private Integer varControl;
 }

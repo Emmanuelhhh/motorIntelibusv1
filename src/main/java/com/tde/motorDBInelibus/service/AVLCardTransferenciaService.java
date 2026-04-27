@@ -29,12 +29,10 @@ public class AVLCardTransferenciaService {
 
     @Transactional
     public void transferirDatos() {
-        Long lastId = descargasAVLCardRepoD.findTopByOrderByIdDesc()
-                .map(DescargasAVLCardD::getId)
-                .orElse(0L);
-        System.out.println("AVL VALIDADOR  - LAST ID DESTINO: " + lastId);
+       
+        
 
-        List<DescargasAvlCardO> origen = leerLoteOrigen(lastId);
+        List<DescargasAvlCardO> origen = leerLoteOrigen();
         
         System.out.println("AVL VALIDADOR VALIDADOR REGISTROS ENCONTRADOS: " + origen.size());
         
@@ -57,66 +55,56 @@ public class AVLCardTransferenciaService {
         try {
             descargasAVLCardRepoD.saveAll(destino);
             insertados = destino.size();
+            origen.forEach(r -> r.setVarControl(0));
+            descargasAvlCardRepoO.saveAll(origen);
+            
             
             
         } catch (DataIntegrityViolationException bulkEx) {
             System.err.println("AVL VALIDADOR  - saveAll falló (posibles duplicados). Fallback a inserción individual. Detalle: "
                     + bulkEx.getMostSpecificCause().getMessage());
             
-            List<DescargasAvlCardO> origenEliminar = new ArrayList<>();
+            List<DescargasAvlCardO> procesados = new ArrayList<>();
             
             for (DescargasAVLCardD d : destino) {
                 try {
                     descargasAVLCardRepoD.save(d);
                     insertados++;
-                    
-                    // Buscar y agregar a la lista de eliminación el registro correspondiente
-                    Optional<DescargasAvlCardO> origenOpt = origen.stream()
+
+                    origen.stream()
                         .filter(o -> o.getId().equals(d.getId()))
-                        .findFirst();
-                    
-                    if (origenOpt.isPresent()) {
-                        origenEliminar.add(origenOpt.get());
-                    }
-                    
+                        .findFirst()
+                        .ifPresent(procesados::add);
+
                 } catch (DataIntegrityViolationException dup) {
                     duplicados++;
                 } catch (Exception e) {
                     fallidos++;
-                    System.err.println("AVL VALIDADOR  - Error insertando id=" + d.getId() + ". Detalle: " + e.getMessage());
                 }
             }
-            
-            
+
+            procesados.forEach(r -> r.setVarControl(0));
+            descargasAvlCardRepoO.saveAll(procesados);
         }
         
-        Long maxIdLote = obtenerMaxId(origen).orElse(lastId);
+        
 
         System.out.println("AVL VALIDADOR  - Leidos: " + origen.size()
                 + " | Insertados: " + insertados
                 + " | Duplicados: " + duplicados
-                + " | Fallidos: " + fallidos
-                + " | MaxIdLote: " + maxIdLote);
+                + " | Fallidos: " + fallidos);
         System.out.println("AVL VALIDADOR  - FIN DEL PROCESO");
     }
 
-    private List<DescargasAvlCardO> leerLoteOrigen(Long lastId) {
-        Pageable page = PageRequest.of(0, BATCH_SIZE, Sort.by(Sort.Direction.ASC, "id"));
-        return descargasAvlCardRepoO.findByIdGreaterThan(lastId , page);
+    private List<DescargasAvlCardO> leerLoteOrigen() {
+      
+    	Pageable pageable = PageRequest.of(0, 1, Sort.by("id").ascending());
+
+    	
+        return descargasAvlCardRepoO.findByVarControl(8, pageable);
     }
 
-    private Optional<Long> obtenerMaxId(List<DescargasAvlCardO> registros) {
-        Long max = null;
-        for (DescargasAvlCardO r : registros) {
-            if (r.getId() == null) {
-                continue;
-            }
-            if (max == null || r.getId() > max) {
-                max = r.getId();
-            }
-        }
-        return Optional.ofNullable(max);
-    }
+
 
     private DescargasAVLCardD convertirADestino(DescargasAvlCardO origen) {
         DescargasAVLCardD destino = new DescargasAVLCardD();

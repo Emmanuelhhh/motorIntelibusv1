@@ -15,5 +15,7 @@ public interface DescargasValidadorSamRepoO extends CrudRepository<DescargasVali
 	        Long lastId,
 	        Pageable pageable
 	);
+	
+	List<DescargasValidadorSamO> findByVarControl(Integer control, Pageable pageable);
     
 }
